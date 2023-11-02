@@ -1,1 +1,46 @@
 @import "bootstrap/scss/bootstrap";
+
+body {
+    position: relative;
+    height: 100vh;
+}
+
+.bgImage {
+    position: absolute;
+    top: -150px;
+    right: 0;
+    z-index: -100;
+}
+
+.headerBtn {
+    background-color: hsl(12, 88%, 59%);
+    color: #fff;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.headerBtn:hover {
+    background-color: hsl(12, 100%, 71%) !important;
+    color: #fff;
+}
+
+main {
+    margin-top: 10rem;
+}
+
+main h1 {
+    color: hsl(228, 39%, 23%);
+}
+
+@media screen and (max-width: 768px) { 
+    main h1 {
+        text-align: center;
+    }
+
+    main .btnContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
