@@ -9,15 +9,23 @@ module.exports = {
     filename: "index.js",
     path: path.resolve(__dirname, "dist"),
     assetModuleFilename: "images/[name][ext][query]",
+    clean: true,
   },
   devServer: {
     static: path.resolve(__dirname, "dist"),
     port: 8080,
     hot: true,
+    open: true,
+    compress: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./src/pages/index.html",
+      filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/auth.html",
+      filename: "auth.html",
     }),
   ],
   module: {
