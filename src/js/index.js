@@ -45,10 +45,10 @@ function signup(e) {
       auth
         .createNewUser(signpInputs.email.value, signpInputs.password.value);
     } else {
-      ui.showModal("Passwords must be same!");
+      ui.toogleModal("Passwords must be same!");
     }
   } else {
-    ui.showModal("Please fill all inputs!");
+    ui.toogleModal("Please fill all inputs!");
   }
 }
 
@@ -62,6 +62,8 @@ function login(e) {
 
   if (isValid) {
     auth.login(loginInputs.email.value, loginInputs.password.value);
+  } else {
+    ui.toogleModal('Please fill all inputs!');
   }
 }
 
