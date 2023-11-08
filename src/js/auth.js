@@ -2,6 +2,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut
 } from "firebase/auth";
 import { Firebase } from "./firebase";
 import { UI } from "./ui";
@@ -17,23 +18,29 @@ export class Auth {
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        window.location.pathname = "dashboard";
+        window.location.pathname = "dashboard.html";
         console.log(user);
       })
       .catch((err) => {
-        this.ui.toogleModal(this.errorParser(err.message));
+        this.ui.toggleAuthModal(this.errorParser(err.message));
       });
   }
 
   async login(email, password) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        window.location.pathname = "dashboard";
+        window.location.pathname = "dashboard.html";
         console.log(userCredential);
       })
       .catch((err) => {
-        this.ui.toogleModal(this.errorParser(err.message));
+        this.ui.toggleAuthModal(this.errorParser(err.message));
       });
+  }
+
+  async signOut() {
+    signOut(this.auth).then(() => {
+      window.location.pathname = "/";
+    });
   }
 
   errorParser(err) {
@@ -58,6 +65,5 @@ export class Auth {
       default:
         return msg;
     }
-
   }
 }

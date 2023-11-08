@@ -27,6 +27,10 @@ module.exports = {
       template: "./src/pages/auth.html",
       filename: "auth.html",
     }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/dashboard.html",
+      filename: "dashboard.html",
+    }),
   ],
   module: {
     rules: [

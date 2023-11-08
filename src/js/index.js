@@ -5,7 +5,9 @@ import * as bootstrap from "bootstrap";
 import LOGO from "../images/logo.png";
 import HOMEIMG from "../images/illustration-intro.svg";
 import BGPATTERN from "../images/bg-tablet-pattern.svg";
+import DEFAULTPROFILE from "../images/default_profile.png";
 
+import Dashboard from "./dashboard";
 import { Firebase } from "./firebase";
 import { Auth } from "./auth";
 import { UI } from "./ui";
@@ -28,10 +30,6 @@ const firebase = new Firebase();
 const auth = new Auth();
 const ui = new UI();
 
-function navigateToAuth() {
-  window.location.pathname = "auth";
-}
-
 function signup(e) {
   e.preventDefault();
 
@@ -45,10 +43,10 @@ function signup(e) {
       auth
         .createNewUser(signpInputs.email.value, signpInputs.password.value);
     } else {
-      ui.toogleModal("Passwords must be same!");
+      ui.toggleAuthModal("Passwords must be same!");
     }
   } else {
-    ui.toogleModal("Please fill all inputs!");
+    ui.toggleAuthModal("Please fill all inputs!");
   }
 }
 
@@ -63,15 +61,19 @@ function login(e) {
   if (isValid) {
     auth.login(loginInputs.email.value, loginInputs.password.value);
   } else {
-    ui.toogleModal('Please fill all inputs!');
+    ui.toggleAuthModal('Please fill all inputs!');
   }
 }
 
 function eventListeners() {
-  loginBtn.addEventListener("click", login);
-  signupBtn.addEventListener("click", signup);
+  loginBtn?.addEventListener("click", login);
+  signupBtn?.addEventListener("click", signup);
 }
 
-document.addEventListener("DOMContentLoaded", () => {});
+document.addEventListener('DOMContentLoaded', () => {
+  if(window.location.pathname.includes('/dashboard.html')) {
+    Dashboard();
+  }
+})
 
 eventListeners();

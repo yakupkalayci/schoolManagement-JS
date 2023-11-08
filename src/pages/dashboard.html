@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - School Management System</title>
+  </head>
+  <body>
+    <div class="container-fluid h-100">
+      <div class="row border-bottom align-items-center">
+        <div class="col-6 p-3">
+          <img
+            src="../images/default_profile.png"
+            width="50px"
+            height="auto"
+            class="rounded-circle"
+          />
+        </div>
+        <div class="col-6 p-3 text-end">
+          <div class="dropdown-center d-md-none">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu dashboardMenu">
+              <li><a class="dropdown-item" role="button">Sınıflarım</a></li>
+              <li><a class="dropdown-item" role="button">Öğrencilerim</a></li>
+              <li><a class="dropdown-item" role="button">Dersler</a></li>
+              <li><a class="dropdown-item" role="button">Sınavlar</a></li>
+              <li><a class="dropdown-item" role="button">Ders Programım</a></li>
+              <li><a class="dropdown-item" role="button">Profilim</a></li>
+              <li class="ps-3">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-x-square-fill d-block d-md-none"
+                viewBox="0 0 16 16"
+                role="button"
+                id="signOutBtn"
+              >
+                <path
+                  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
+                />
+              </svg>
+              </li>
+            </ul>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-x-square-fill d-none d-md-inline"
+            viewBox="0 0 16 16"
+            role="button"
+            id="signOutBtn"
+          >
+            <path
+              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="row h-100">
+        <div class="col-2 col-xxl-1 d-none d-md-block">
+          <div class="list-group mt-3 dashboardMenu">
+            <a role="button" class="list-group-item list-group-item-action"
+              >Sınıflarım</a
+            >
+            <a role="button" class="list-group-item list-group-item-action"
+              >Öğrencilerim</a
+            >
+            <a role="button" class="list-group-item list-group-item-action"
+              >Dersler</a
+            >
+            <a role="button" class="list-group-item list-group-item-action"
+              >Sınavlar</a
+            >
+            <a role="button" class="list-group-item list-group-item-action"
+              >Ders Programım</a
+            >
+            <a role="button" class="list-group-item list-group-item-action"
+              >Profilim</a
+            >
+          </div>
+        </div>
+        <div class="col-12 col-md-10 col-xxl-11 border">Main</div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="signOutModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Signout</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are you sure?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
