@@ -6,20 +6,21 @@ import {
 } from "firebase/auth";
 import { Firebase } from "./firebase";
 import { UI } from "./ui";
+import { Storage } from "./storage";
 
 export class Auth {
   constructor() {
     this.firebase = new Firebase();
     this.ui = new UI();
+    this.storage = new Storage();
     this.auth = getAuth(this.firebase.app);
   }
 
   async createNewUser(email, password) {
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        this.storage.setSessionStorage('activeUser', userCredential.user.uid);
         window.location.pathname = "dashboard.html";
-        console.log(user);
       })
       .catch((err) => {
         this.ui.toggleAuthModal(this.errorParser(err.message));
@@ -29,8 +30,8 @@ export class Auth {
   async login(email, password) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
+        this.storage.setSessionStorage('activeUser', userCredential.user.uid);
         window.location.pathname = "dashboard.html";
-        console.log(userCredential);
       })
       .catch((err) => {
         this.ui.toggleAuthModal(this.errorParser(err.message));
@@ -40,6 +41,7 @@ export class Auth {
   async signOut() {
     signOut(this.auth).then(() => {
       window.location.pathname = "/";
+      this.storage.setSessionStorage('activeUser', '');
     });
   }
 

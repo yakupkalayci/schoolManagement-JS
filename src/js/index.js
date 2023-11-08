@@ -11,6 +11,7 @@ import Dashboard from "./dashboard";
 import { Firebase } from "./firebase";
 import { Auth } from "./auth";
 import { UI } from "./ui";
+import { Storage } from "./storage";
 
 const loginBtn = document.querySelector("button#loginBtn");
 const signupBtn = document.querySelector("button#signupBtn");
@@ -29,6 +30,7 @@ const signpInputs = {
 const firebase = new Firebase();
 const auth = new Auth();
 const ui = new UI();
+const storage = new Storage();
 
 function signup(e) {
   e.preventDefault();
@@ -72,7 +74,17 @@ function eventListeners() {
 
 document.addEventListener('DOMContentLoaded', () => {
   if(window.location.pathname.includes('/dashboard.html')) {
-    Dashboard();
+    if(!(storage.getSessionStorage('activeUser'))) {
+      window.location.pathname = "/";
+    }
+    else {
+      Dashboard();
+    }
+  }
+  if(window.location.pathname.includes('/auth.html')) {
+    if(storage.getSessionStorage('activeUser')) {
+      window.location.pathname = "/dashboard.html";
+    }
   }
 })
 

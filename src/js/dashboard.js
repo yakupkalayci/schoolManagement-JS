@@ -1,4 +1,5 @@
 import { UI } from "./ui";
+import { Auth } from "./auth";
 
 export default function Dashboard() {
   const signOutBtn = document.querySelectorAll("svg#signOutBtn");
@@ -9,6 +10,7 @@ export default function Dashboard() {
   let activeMenu = "";
 
   const ui = new UI();
+  const auth = new Auth();
 
   const removeMenu = (e) => {
     let activeItem;
@@ -32,7 +34,7 @@ export default function Dashboard() {
   const signOut = () => {
     ui.toggleSignOutModal();
     signOutOkBtn.addEventListener('click', () => {
-      window.location.pathname = "/";
+      auth.signOut();
     });
   }
 
