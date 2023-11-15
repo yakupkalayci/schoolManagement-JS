@@ -6,6 +6,7 @@ import LOGO from "../images/logo.png";
 import HOMEIMG from "../images/illustration-intro.svg";
 import BGPATTERN from "../images/bg-tablet-pattern.svg";
 import DEFAULTPROFILE from "../images/default_profile.png";
+import CARDBG from '../images/cardBG.jpg';
 
 import Dashboard from "./dashboard";
 import { Firebase } from "./firebase";
@@ -86,6 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.pathname = "/dashboard.html";
     }
   }
-})
+});
 
 eventListeners();

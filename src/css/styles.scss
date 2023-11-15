@@ -32,6 +32,16 @@ main h1 {
     color: hsl(228, 39%, 23%);
 }
 
+.classRoomCard {
+    width: 25rem;;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.classRoomCard > img {
+    opacity: 0.5;
+}
+
 @media screen and (max-width: 768px) { 
     main h1 {
         text-align: center;

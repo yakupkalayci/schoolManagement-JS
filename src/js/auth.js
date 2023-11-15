@@ -2,7 +2,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { Firebase } from "./firebase";
 import { UI } from "./ui";
@@ -19,8 +19,13 @@ export class Auth {
   async createNewUser(email, password) {
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        this.storage.setSessionStorage('activeUser', userCredential.user.uid);
-        window.location.pathname = "dashboard.html";
+        this.storage.setSessionStorage("activeUser", userCredential.user.uid);
+        this.firebase
+          .addNewUsertoDb(userCredential.user.uid)
+          .then(() => {
+            window.location.pathname = "dashboard.html";
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         this.ui.toggleAuthModal(this.errorParser(err.message));
@@ -30,7 +35,7 @@ export class Auth {
   async login(email, password) {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        this.storage.setSessionStorage('activeUser', userCredential.user.uid);
+        this.storage.setSessionStorage("activeUser", userCredential.user.uid);
         window.location.pathname = "dashboard.html";
       })
       .catch((err) => {
@@ -41,29 +46,29 @@ export class Auth {
   async signOut() {
     signOut(this.auth).then(() => {
       window.location.pathname = "/";
-      this.storage.setSessionStorage('activeUser', '');
+      this.storage.setSessionStorage("activeUser", "");
     });
   }
 
   errorParser(err) {
-    const startIndex = err.indexOf('(');
-    const endIndex = err.indexOf(')');
+    const startIndex = err.indexOf("(");
+    const endIndex = err.indexOf(")");
 
-    let msg = err.slice(startIndex+1, endIndex);
+    let msg = err.slice(startIndex + 1, endIndex);
 
-    switch(msg) {
-      case 'auth/weak-password':
+    switch (msg) {
+      case "auth/weak-password":
         return "Password should be at least 6 characters.";
-      case 'auth/email-already-in-use':
+      case "auth/email-already-in-use":
         return "Email already in use. Please use a different email address.";
-      case 'auth/invalid-email':
-          return "Invalid email address!";
-      case 'auth/invalid-password':
-          return 'Invalid password. Password should be at least 6 characters.';
-      case 'auth/user-not-found':
-          return "User not found!";
-      case 'auth/invalid-login-credentials':
-          return "Invalid login information!"
+      case "auth/invalid-email":
+        return "Invalid email address!";
+      case "auth/invalid-password":
+        return "Invalid password. Password should be at least 6 characters.";
+      case "auth/user-not-found":
+        return "User not found!";
+      case "auth/invalid-login-credentials":
+        return "Invalid login information!";
       default:
         return msg;
     }

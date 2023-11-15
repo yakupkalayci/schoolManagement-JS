@@ -18,7 +18,12 @@
         </div>
         <div class="col-6 p-3 text-end">
           <div class="dropdown-center d-md-none">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            ></button>
             <ul class="dropdown-menu dashboardMenu">
               <li><a class="dropdown-item" role="button">Sınıflarım</a></li>
               <li><a class="dropdown-item" role="button">Öğrencilerim</a></li>
@@ -28,19 +33,19 @@
               <li><a class="dropdown-item" role="button">Profilim</a></li>
               <li class="ps-3">
                 <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                class="bi bi-x-square-fill d-block d-md-none"
-                viewBox="0 0 16 16"
-                role="button"
-                id="signOutBtn"
-              >
-                <path
-                  d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
-                />
-              </svg>
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-x-square-fill d-block d-md-none"
+                  viewBox="0 0 16 16"
+                  role="button"
+                  id="signOutBtn"
+                >
+                  <path
+                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"
+                  />
+                </svg>
               </li>
             </ul>
           </div>
@@ -83,10 +88,45 @@
             >
           </div>
         </div>
-        <div class="col-12 col-md-10 col-xxl-11 border">Main</div>
+        <div
+          class="col-12 col-md-10 col-xxl-11 border"
+          id="dashboardMainContent"
+        >
+          <div class="row">
+            <div class="col-12 border-bottom">
+              <h5>Sınıflarım</h5>
+            </div>
+          </div>
+          <div
+            class="row p-3 d-flex justify-content-center"
+            id="dashboardContent"
+          >
+            <div class="card text-center" style="width: 18rem">
+              <div class="card-body">
+                <h5 class="card-title">No class!</h5>
+                <p class="card-text text-left">
+                  You have no class. To add a new one, please click the button
+                  below!
+                </p>
+                <a href="#" class="btn btn-primary card-link addClassBtn">Add Class</a>
+              </div>
+            </div>
+            <!-- Card Template -->
+            <!-- <div class="card text-bg-dark mb-3 me-5 classRoomCard">
+              <img src="../images/cardBG.jpg" class="card-img">
+              <div class="card-img-overlay d-flex flex-column justify-content-around align-items-center">
+                <h1 class="card-title">5-A</h1>
+                <div>
+                  <a href="#" class="card-link text-light">İncele</a>
+                  <a href="#" class="card-link text-light">Sil</a>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Signout Modal -->
     <div
       class="modal fade"
       id="signOutModal"
@@ -115,6 +155,42 @@
               Close
             </button>
             <button type="button" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add Class Modal -->
+    <div
+      class="modal fade"
+      id="addClassModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel1">Add Class</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="className" class="form-label">Class Name:</label>
+            <input type="text" class="form-control" name="className" id="className">
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
